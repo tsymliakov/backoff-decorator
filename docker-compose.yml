@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: some_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 123qwe
+    networks:
+      - net
+    ports:
+      - "5432:5432"
+
+networks:
+  net:
+    driver: bridge
+
+volumes:
+  pg_data:
